@@ -13,3 +13,6 @@ def index(request):
 
 def course(request, item):
     return HttpResponse(course_dictionarry[item])
+
+def multiply_wievs(request, num1,num2):
+    return HttpResponse(f"{num1} * {num2} = {num1 *num2}")

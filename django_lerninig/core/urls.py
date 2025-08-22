@@ -5,5 +5,6 @@ from . import views
 
 urlpatterns = [
     path("",views.index,name="core"),
-    path("<str:item>/",views.course , name="course")
+    path("<str:item>/",views.course , name="course"),
+    path("<int:num1>/<int:num2>/",views.multiply_wievs,name= "multiply_wievs"),
 ]
