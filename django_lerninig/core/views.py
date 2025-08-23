@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse,Http404,HttpResponseNotFound
+from django.http import HttpResponse,Http404,HttpResponseNotFound, HttpResponseRedirect
 
 # Create your views here.
 course_dictionarry = {
@@ -22,3 +22,8 @@ def course(request, item):
 
 def multiply_wievs(request, num1,num2):
     return HttpResponse(f"{num1} * {num2} = {num1 *num2}")
+
+def course_number_view (request,num1):
+    if num1 == 10 :
+        return HttpResponseRedirect("/core/java")
+    
