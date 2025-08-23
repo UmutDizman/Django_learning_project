@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse,Http404,HttpResponseNotFound, HttpResponseRedirect
-
+from django.urls import reverse
 # Create your views here.
 course_dictionarry = {
     "python": "Python Course Page",
@@ -24,6 +24,14 @@ def multiply_wievs(request, num1,num2):
     return HttpResponse(f"{num1} * {num2} = {num1 *num2}")
 
 def course_number_view (request,num1):
-    if num1 == 10 :
-        return HttpResponseRedirect("/core/java")
+    course_list = list(course_dictionarry.keys())
+
+    try:
+        course_num = course_list[num1]
+        page_to_go = reverse("course",args=[course_num])
+        return HttpResponseRedirect(page_to_go)
+    except:
+        return HttpResponseNotFound("Sayfa Bulunamadı kıne")
+
+    
     
